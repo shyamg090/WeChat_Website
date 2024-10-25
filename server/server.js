@@ -1,28 +1,19 @@
 const express = require('express');
-const {chats} = require('./Data/Dummydata');
+// const {chats} = require('./Data/Dummydata');
+const connectDB = require('./DB/Db');
+const userRouter = require('./Routes/userRoutes');
 
-const dotenv  = require('dotenv')
-dotenv.config();
+require('dotenv').config();
+
+connectDB();
 
 const PORT = process.env.PORT || 4000;
 
 const app = express(); // instance of express
 
-app.get('/', (req,res)=>{
-    console.log('server is running');
-    res.send('<h1> this is fron server </h1>')
-})
+app.use(express.json());
 
-app.get('/api/chat', (req,res)=>{
-    res.send(chats)
-})
-
-app.get('/api/chat/:id', (req,res)=>{
-    const singleChat = chats.filter((item, id)=>{
-        return item._id === req.params.id
-    })
-    res.send(singleChat)
-})
+app.use('/', userRouter);
 
 app.listen(PORT, ()=>{
     console.log(`Server started!! on ${PORT}`);
