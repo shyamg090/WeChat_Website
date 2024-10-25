@@ -21,13 +21,13 @@
 
 1. **Clone the Repo**:
    ```bash
-   git clone https://github.com/your-username/WeChat.git && cd WeChat
+    git clone https://github.com/shyamg090/WeChat.git && cd WeChat
    ```
 
 2. **Backend**:
    - Navigate to `server/`, install dependencies, and set up `.env` with MongoDB and Cloudinary configs:
      ```bash
-     npm install && npm start
+     npm install && npx nodemon
      ```
 
 3. **Frontend**:
